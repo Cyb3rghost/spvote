@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./partials/header %>
+</header>
+
+<main>
+  
+  <h1>Mes participations</h1>
+  <br/>
+  <% for(var i=0; i<sujet.length; i++){ %>
+
+    <% if (sujet[i].sujet != null) { %> 
+
+      <% if (sujet[i].sujet.participants.length === sujet[i].sujet.quota) { %> 
+        <a href="/visualisation/<%= sujet[i].sujet._id %>/"><div class="card">
+      <% }else{ %>
+          <div class="card">
+      <% } %>
+
+      <div class="card-body">
+        <p class="text-center"><b><%= sujet[i].sujet.subject %></b> <br/> <small>By <%= sujet[i].user.username  %>
+        </small></p>
+        <p class="text-right"> <%= sujet[i].sujet.participants.length %> / <%= sujet[i].sujet.quota %> Participants  - <b>Status : </b> <%= sujet[i].sujet.status %>
+          <% if (sujet[i].sujet.participants.length != sujet[i].sujet.quota) { %> 
+            <a href="/participation/<%= sujet[i].sujet._id %>/">▶️</a>
+          <% } %>
+          </p>
+          <% var calcul = 100 * sujet[i].sujet.participants.length / sujet[i].sujet.quota; var pourcentage = calcul %>
+        <div class="progress">
+          <div class="progress-bar bg-warning" role="progressbar" style="width: <%= pourcentage %>%;" aria-valuenow="<%= pourcentage %>" aria-valuemin="0" aria-valuemax="100"><%= pourcentage %>%</div> 
+        </div> 
+      </div></a>
+
+      </div><br/>
+      
+    <% } %>
+
+  <% } %>
+
+</main>
+
+<footer>
+    <% include ./partials/footer %>
+</footer>
+
+<% include ./partials/modals %>
+
+
+</body>
+</html>

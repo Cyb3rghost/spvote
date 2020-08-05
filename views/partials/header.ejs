@@ -1,0 +1,59 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">SimplonVOT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <% if (user) { %>
+        <li class="nav-item active">
+          <a class="nav-link" href="/sujet">Sujets <span class="sr-only">(current)</span></a>
+        </li>  
+        <%} else {%>
+          <li class="nav-item">
+            <a class="nav-link" href="/connexion">Connexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/inscription">Inscription</a>
+          </li>
+        <% } %>
+      </ul>
+      <ul class="nav navbar-nav ml-auto">
+        <% if (user) { %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Bienvenue, <%= username %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/creer-un-sujet" data-toggle="modal" data-target="#exampleModal">Créer un sujet</a>
+            <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/mes-sujets">Mes sujets</a>
+              <a class="dropdown-item" href="/mes-participations">Mes participations</a>
+              <a class="dropdown-item" href="/en-cours">Mes votes en cours</a>
+              <a class="dropdown-item" href="/terminer">Mes votes terminer</a>
+          </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Deconnexion</a>
+        </li>
+        <% } %>
+
+
+      </ul>
+    </div>
+  </nav>
+
+  <br/>
+
+  <% if (locals.msgFlash.message) { %>
+    <div class="alert alert-<%= locals.msgFlash.type %> alert-dismissible fade show mt-3" role="alert">
+      <strong><%= locals.msgFlash.message %></strong>.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% }%>
+
+
+

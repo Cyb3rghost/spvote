@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./partials/header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+      <form method="post" action="/register" class="form">
+
+        <div class="form-group">
+          <label>Pseudo</label>
+          <input type="text" name="username" class="form-control">
+        </div>
+
+      	<div class="form-group">
+      		<label>Mail</label>
+      		<input type="mail" name="email" class="form-control">
+      	</div>
+      
+		
+		    <div class="form-group">
+      		<label>Mot de passe</label>
+      		<input type="password" name="password" class="form-control">
+      	</div>
+
+        <div class="form-group">
+          <label>Confirmation de mot de passe</label>
+          <input type="password" name="passwordConf" class="form-control">
+        </div>
+      
+      	<div class="col-sm-12 text-center mt-5">
+      			<input type="submit" value="inscrire" class="btn btn-primary">
+
+      	</div>
+
+      
+      </form>
+
+      <div class="col-sm-12 text-center mt-5">
+        
+            <a href="/">Se connecter</a>
+      </div>
+  
+    </div>
+</main>
+
+<footer>
+    <% include ./partials/footer %>
+</footer>
+
+<% include ./partials/modals %>
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./partials/header %>
+</header>
+
+<main>
+        <div class="card">
+          <div class="card-body">
+            <p class="text-center"><b><%= sujet.subject %></b> <br/> <small>By <%= sujet.createdBy.username  %>
+            </small></p>
+            <p>
+              <% sujet.choices.forEach(function(choix, index) { %>
+                <li><%= choix %> <%if (sujet.status === "Inprogress") { %> <a href="/vote/<%= index %>/<%= choix %>/<%= sujet._id %>/<%= sujet.quota %>">✋</a> <% } %></li>
+              <% }); %>
+            </p>
+            <%if (sujet.status === "Finished") { %>
+                <div class="card bg-light">
+                  <div class="card-body">
+
+                    <b>Résultat : </b>
+                    <% score.forEach(function(choix, index) { %>
+                      <li><%= choix.nom + ' ( ' + choix.nbr  + ' Vote(s) ) ' %></li>
+                    <% }); %>
+                    
+                  </div>
+                </div>
+            <% } %>
+            <p class="text-right"> <%= sujet.participants.length %> / <%= sujet.quota %> Participants - Status : <%= sujet.status %></p>
+              <% var calcul = 100 * sujet.participants.length / sujet.quota; var pourcentage = calcul %>
+            <div class="progress">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: <%= pourcentage %>%;" aria-valuenow="<%= pourcentage %>" aria-valuemin="0" aria-valuemax="100"><%= pourcentage %>%</div> 
+            </div> 
+          </div>
+        </div>
+</main>
+
+<footer>
+    <% include ./partials/footer %>
+</footer>
+
+<% include ./partials/modals %>
+
+
+</body>
+</html>

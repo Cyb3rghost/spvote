@@ -1,0 +1,43 @@
+            var tailleTotal = resultat.length;
+            var tableauScore = new Array(tailleTotal);
+            var index = 0;
+            tableauScore[0] = choix;
+            console.log(tableauScore)
+            tableauScore.forEach(element => {
+                
+                console.log('ELEMENT LA MOUKATE : ' + element)
+                tableauScore[index] = choix;
+
+                index++;
+
+            });
+           
+            index = 0;
+            console.log(tableauScore)
+
+            var indexo = 0;
+
+            resultat.forEach(element => {
+
+                console.log('OU EXISTE OU PAS ? : LA MOUKATE ' + tableauScore[indexo].nom)
+
+                if(tableauScore[indexo].nom === element.namechoice)
+                {
+
+                    tableauScore[indexo].nbr = tableauScore[indexo].nbr + 1
+
+                }
+                else
+                {
+                    /*choix.nom = element.namechoice;
+                    choix.nbr = 1;
+                    tableauScore[index] = choix;*/
+                    tableauScore[index].nom = element.namechoice
+                    tableauScore[index].nbr = 1
+                    //tableauScore.push({'nom': element.namechoice, 'nbr': 1})
+
+                }
+
+                index++;
+
+            });

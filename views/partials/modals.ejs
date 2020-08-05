@@ -1,0 +1,72 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Créer un sujet</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="post" action="/publication">
+            <div class="modal-body">
+                    <div class="form-group">
+                        <label for="sujet">Sujet</label>
+                        <input type="text" class="form-control" name="sujet" id="sujet" aria-describedby="sujet">
+                    </div>
+                    <div class="form-group">
+                        <label for="sujet">Nombre de participant</label>
+                        <input type="number" class="form-control" name="quota" min="2" value="2">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>Choix</label>
+                              <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="choix" name="choix" placeholder="Ajout choix">
+                                <div class="input-group-append">
+                                  <button class="btn btn-outline-secondary" type="button" onclick="addChoix()" id="button-addon2">👋🏻</button>
+                                </div>
+                              </div>
+                            <ul id="listeChoix">
+
+
+                            </ul>
+                            <input type="hidden" name="cacheListeChoix" id="cacheListeChoix" />
+                          </div>                    
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Création</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript">
+
+  var listeChoix = [];
+  var afficheChoix = [];
+
+  function addChoix()
+  {
+
+    var choix = $('#choix').val();
+    var cacheChoix = $('#cacheListeChoix').val();
+
+    //var reelValeur = choix.val();
+
+    console.log(listeChoix)
+
+    listeChoix.push(choix);
+
+    afficheChoix += "<li>" + choix + "</li>"
+
+    $('#listeChoix').html(afficheChoix)
+    $('#cacheListeChoix').val(listeChoix);
+
+    $('#choix').val('');
+
+
+  }
+
+</script>
